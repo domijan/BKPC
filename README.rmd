@@ -1,0 +1,83 @@
+# BKPC R package. 
+
+To install use  
+
+
+```{r, eval=FALSE}
+devtools::install_git("https://gitlab.com/domijank/BKPC.git")
+```
+
+Bayesian kernel projection classifier (BKPC) is a nonlinear multicategory classifier which performs the classification of the projections of the data to the principal axes of the feature space. A Gibbs sampler is implemented to find the posterior distributions of the parameters. 
+
+The main function is bkpc. 
+
+The data can be passed to the bkpc function as:
+
+- a matrix of features,
+
+- a kernel matrix of either:
+
+* class 'kern' (a Gaussian kernel computed using the gaussKern{BKPC} function) or 
+* class 'kernelMatrix' from library kernlab. This allows for a wider selection of inbuilt kernel generating functions as well as user defined functions.
+
+The package contains a microarray dataset and a function to extract the marginal relevance of each feature for classification.
+
+
+For an example of running bkpc see below:
+```{r, eval=FALSE}
+set.seed(-88106935)
+library(BKPC)
+data(microarray)
+
+# consider only four tumour classes (NOTE: "NORM" is not a class of tumour)
+y <- microarray[, 2309]
+train <- as.matrix(microarray[y != "NORM", -2309])
+wtr <- factor(microarray[y != "NORM", 2309], levels = c("BL" ,  "EWS" , "NB" ,"RMS" ))
+
+n.kpc <- 6
+n.class <- length(levels(wtr)) - 1
+
+K <- gaussKern(train)$K
+
+# supply starting values for the parameters
+# use Gaussian kernel as input
+
+result <- bkpc(K, y = wtr, n.iter = 1000,  thin = 10, n.kpc = n.kpc,  
+initSigmasq = 0.001, initBeta = matrix(10, n.kpc *n.class, 1), 
+initTau =matrix(10, n.kpc * n.class, 1), intercept = FALSE, rotate = TRUE)
+
+# predict
+
+out <- predict(result, n.burnin = 10) 
+
+table(out$class, as.numeric(wtr))
+
+# plot the data projection on the kernel principal components
+
+pairs(result$kPCA$KPCs[, 1 : n.kpc], col = as.numeric(wtr), 
+main =  paste("symbol = predicted class", "\n", "color = true class" ), 
+pch = out$class, upper.panel = NULL)
+par(xpd=TRUE)
+legend('topright', levels(wtr), pch = unique(out$class), 
+text.col = as.numeric(unique(wtr)), bty = "n")
+
+```
+
+
+For an example of feature selection using marginal relevance see:
+```{r, eval=FALSE}
+
+data(microarray)
+
+profiles <- as.matrix(microarray[, -2309])
+tumourType <-  microarray[, 2309]
+ 
+margRelv <- marginalRelevance(profiles, tumourType)
+
+# plot 30 gene profiles with highest marginal relevance score
+plot(margRelv, type = "parallelcoord", n.feat = 50, col = tumourType )
+```
+
+
+
+

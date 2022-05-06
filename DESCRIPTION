@@ -1,0 +1,13 @@
+Package: BKPC
+Type: Package
+Title: Bayesian Kernel Projection Classifier
+Version: 1.0.1.9000
+Date: 2018-03-06
+Author: K. Domijan
+Maintainer: K. Domijan <domijank@tcd.ie>
+BugReports: https://gitlab.com/domijank/BKPC/issues
+Description: Bayesian kernel projection classifier (Domijan and Wilson,2011) <doi:10.1007/s11222-009-9161-8> is a nonlinear multicategory classifier which performs the classification of the projections of the data to the principal axes of the feature space. A Gibbs sampler is implemented to find the posterior distributions of the parameters.
+LazyData: true
+License:  GPL-2
+Depends: R (>= 2.10)
+Imports: kernlab
