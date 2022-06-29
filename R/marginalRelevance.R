@@ -22,12 +22,6 @@ marginalRelevance <- function (x, y)
   e1$rank <- rank(-e1$score, ties.method = "random")
   e1$bestVars <- match(1:ncol(x), e1$rank)
   e1$orderedData <- x[,e1$bestVars]
-  # for (i in 1:NF) {
-  #   bestVars[i] <- which(e1$rank == i)
-  #   xOrdered[, i] <- x[, which(e1$rank == i)]
-  # }
-  # e1$bestVars <- bestVars
-  # e1$orderedData <- xOrdered
   e1 <- as.list(e1)
   class(e1) = "marginalRelevance"
   return(e1)
