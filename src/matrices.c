@@ -1,3 +1,6 @@
+#ifndef  USE_FC_LEN_T
+# define USE_FC_LEN_T
+#endif
 
 #include "matrices.h"
 
@@ -9,6 +12,9 @@
 #include <R_ext/Lapack.h>
 #include <R_ext/Utils.h>
 
+#ifndef FCONE
+# define FCONE
+#endif
 
 /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 	Constant for Choleski 
@@ -89,7 +95,7 @@ void matrix_by_matrix(double *M, double *A, int Nrow, int Ncol)
      alpha = 1.0;
      beta = 0.0;
       
-     F77_CALL(dgemm)(&transa, &transb,&MM,&N,&K,&alpha, M,&lda,M,&ldb,&beta,A,&ldc);
+     F77_CALL(dgemm)(&transa, &transb,&MM,&N,&K,&alpha, M,&lda,M,&ldb,&beta,A,&ldc  FCONE FCONE);
      
      transpose(M, Ncol, Nrow);
 
@@ -116,7 +122,7 @@ void eigen(double *K, double *E, int Nrow )
 /* in FORTRAN/LAPACK/MATLAB world: a(i,j) = a[i+j*N] */
      double *buffer = (double *) malloc(sizeof(double)*lbuffer);    
 
-     F77_CALL(dsyev)( &jobz, &upper_triangle, &n, K, &lda, E, buffer, &lbuffer, &info);
+     F77_CALL(dsyev)( &jobz, &upper_triangle, &n, K, &lda, E, buffer, &lbuffer, &info  FCONE FCONE);
 
  //    printf("\n INFO=%d \n\n", info );  
      free(buffer);        
@@ -137,7 +143,7 @@ void cholesky(double *V, double *L, int Nrow )
   lda = Nrow;
 
   memcpy (L,V,Nrow*Nrow*sizeof(double));
-  dpotrf_( &upper_triangle, &n, L, &lda, &info); //inverse of the inverse
+  dpotrf_( &upper_triangle, &n, L, &lda, &info FCONE); //inverse of the inverse
   for(i = 0; i < Nrow; i++) {
     	for(j = i + 1; j < Nrow; j++) {
           L[i*Nrow + j] = 0;              

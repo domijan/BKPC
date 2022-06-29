@@ -6,7 +6,7 @@
 */
   
   /* .C calls */
-  extern void getKPCs(void *, void *, void *, void *, void *, void *);
+extern void getKPCs(void *, void *, void *, void *, void *, void *);
 extern void mainbkpc(void *, void *, void *, void *, void *, void *, void *, void *, void *, void *, void *, void *, void *, void *, void *, void *, void *, void *, void *);
 extern void rkern(void *, void *, void *, void *, void *, void *);
 

@@ -41,19 +41,19 @@ No 457, pp 77-87.
 }
 \examples{
 
-
+\dontrun{
 data(microarray)
 
 profiles <- as.matrix(microarray[, -2309])
 tumourType <-  microarray[, 2309]
  
- margRelv <- marginalRelevance(profiles, tumourType)
+margRelv <- marginalRelevance(profiles, tumourType)
 
-# plot 30 gene profiles with highest marginal relevance score
- plot(margRelv, type = "parallelcoord", n.feat = 50, col = tumourType )
+#plot 30 gene profiles with highest marginal relevance score
+plot(margRelv, type = "parallelcoord", n.feat = 50, col = tumourType )
 
  
-\dontrun{
+
 # another example: wine data from gclus
 library(gclus)
 data(wine)
