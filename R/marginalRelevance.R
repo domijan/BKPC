@@ -19,9 +19,7 @@ marginalRelevance <- function (x, y)
                                                                                                                 levels(y)[k], ], 2, mean, na.rm = TRUE)))))^2, 2, sum, na.rm = TRUE)
   }
   e1$score <- u/l
-  # e1$rank <- rank(-e1$score, ties.method = "random")
-  # e1$bestVars <- match(1:ncol(x), e1$rank)
-  # e1$orderedData <- x[,e1$bestVars]
+
   e1 <- as.list(e1)
   # class(e1) = "marginalRelevance"
   return(e1)

@@ -49,10 +49,19 @@ tumourType <-  microarray[, 2309]
  
 margRelv <- marginalRelevance(profiles, tumourType)
 
-#plot 30 gene profiles with highest marginal relevance score
-plot(margRelv, type = "parallelcoord", n.feat = 50, col = tumourType )
+#plot 30 gene profiles with highest marginal 
+
+
+bestVars <- match(1:ncol(profiles), rank(margRelv$score, ties.method = "random"))
 
  
+library(gclus)
+
+ cparcoord(profiles[,bestVars[2308:2280]],  col = tumourType)
+
+
+cpairs(profiles[,bestVars[2308:2300]], col = tumourType)
+
 
 # another example: wine data from gclus
 library(gclus)
@@ -64,13 +73,6 @@ label <- as.factor(wine[, 1])
 
 
 margRelv <- marginalRelevance(dt, label)
-
-#variables in order of their MR score
-colnames(dt)[ margRelv$bestVars]
-
-
-cparcoord(dt, order = margRelv$bestVars, col = label)
-cpairs(dt, order = margRelv$bestVars, col = label)
 
 }
 }
