@@ -160,9 +160,9 @@ intercept = FALSE, rotate = TRUE)
 out <- predict(result, test, n.burnin = 10) 
 
 # classification rate
-sum(out$class == as.numeric(wte))/dim(test)[1]
+sum(out$class == wte)/dim(test)[1]
 
-table(out$class, as.numeric(wte))
+table(out$class, wte)
 
 \dontrun{
 # Another example: synthetic data from MASS library
@@ -196,8 +196,8 @@ out <- predict(result, Ktest, n.burnin = 10)
 
 # classification rate
 
-sum(out$class == as.numeric(wte))/dim(test)[1]
-table(out$class, as.numeric(wte))
+sum(out$class == wte)/dim(test)[1]
+table(out$class, wte)
 
 
 # embed data from the testing set on the new space:
@@ -224,7 +224,7 @@ intercept = FALSE, rotate = FALSE)
 outBKMC <- predict(resultBKMC, Ktest, n.burnin = 10)
 
 # to compare with previous model
-table(outBKMC$class, as.numeric(wte))
+table(outBKMC$class, wte)
 
 
 # another example: wine data from gclus library
@@ -253,7 +253,7 @@ intercept = FALSE, rotate = TRUE)
 out <- predict(result, Ktest, n.burnin = 10) 
 
 # classification rate in the test set
-sum(out$class == as.numeric(wte))/dim(test)[1]
+sum(out$class == wte)/dim(test)[1]
 
 
 # embed data from the testing set on the new space:

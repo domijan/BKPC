@@ -54,6 +54,7 @@ function(object,  newdata = NULL, n.burnin = 0, ...){
   
   e1 <- predictMultinomSamples(design, beta, n.class = n.class, n.burnin)
 
- # class(e1) <- "bkpcPrediction"
+  e1$class <- as.factor(e1$class)
+  levels(e1$class) <- object$ylevels
   return(e1)
 }

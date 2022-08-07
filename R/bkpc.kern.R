@@ -64,7 +64,7 @@ function(x, y, n.kpc = NULL, thin = 100,
   else object$kPCA <- NULL
   object$x <- x
   object$theta <- NULL
-  
+  object$ylevels <- levels(y)
   class(object) <- c("bkpc.kern", "bkpc")   
   return(object)
 }
