@@ -21,6 +21,5 @@ marginalRelevance <- function (x, y)
   e1$score <- u/l
 
   e1 <- as.list(e1)
-  # class(e1) = "marginalRelevance"
   return(e1)
 }
