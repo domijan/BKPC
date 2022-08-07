@@ -37,7 +37,7 @@ No 457, pp 77-87.
 
 
 \seealso{
-  \code{\link{plot.marginalRelevance}} \code{\link{microarray}}
+  \code{\link{microarray}}
 }
 \examples{
 
