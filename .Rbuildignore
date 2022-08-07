@@ -1,2 +1,8 @@
 ^.*\.Rproj$
 ^\.Rproj\.user$
+^LICENSE\.md$
+^README\.Rmd$
+^\.github$
+^Cran-comments\.md$
+^News\.md$
+^CRAN-SUBMISSION$
