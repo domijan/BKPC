@@ -17,6 +17,8 @@ The data can be passed to the bkpc function as:
 
 - a kernel matrix of either:
 
+
+
 * class 'kern' (a Gaussian kernel computed using the gaussKern{BKPC} function) or 
 * class 'kernelMatrix' from library kernlab. This allows for a wider selection of inbuilt kernel generating functions as well as user defined functions.
 
