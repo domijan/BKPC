@@ -130,13 +130,13 @@ table(out$class, as.numeric(wtr))
 
 # plot the data projection on the kernel principal components
 
+
 pairs(result$kPCA$KPCs[, 1 : n.kpc], col = as.numeric(wtr), 
 main =  paste("symbol = predicted class", "\n", "color = true class" ), 
-pch = out$class, upper.panel = NULL)
+pch = as.numeric(out$class), upper.panel = NULL)
 par(xpd=TRUE)
 legend('topright', levels(wtr), pch = unique(out$class), 
-text.col = as.numeric(unique(wtr)), bty = "n")
-
+col = as.numeric(unique(wtr)), bty = "n")
 
 
 
