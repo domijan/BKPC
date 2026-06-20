@@ -26,7 +26,7 @@ Plot bkpc Objects
 \code{\link{summary.bkpc}}
 }
 \examples{
-set.seed(-88106935)
+set.seed(1)
 
 data(microarray)
 
