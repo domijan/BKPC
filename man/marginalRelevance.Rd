@@ -1,11 +1,11 @@
 \name{marginalRelevance}
 \alias{marginalRelevance}
 
-\title{Marginal Relevance}
+\title{Feature Marginal Relevance}
 
 
 \description{
-Calculates Marginal Relevance of each feature (variable) useful for class (group) separation. The marginal relevance score is a ratio of the between-group to within-group sum of squares. 
+Calculates Marginal Relevance of each feature (Fisher criterion) useful for class (group) separation. The marginal relevance score is a ratio of the between-group to within-group sum of squares. 
 
 }
 \usage{
