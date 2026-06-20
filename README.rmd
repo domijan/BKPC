@@ -58,9 +58,9 @@ table(out$class, as.numeric(wtr))
 
 pairs(result$kPCA$KPCs[, 1 : n.kpc], col = as.numeric(wtr), 
 main =  paste("symbol = predicted class", "\n", "color = true class" ), 
-pch = out$class, upper.panel = NULL)
+pch = as.numeric(out$class), upper.panel = NULL)
 par(xpd=TRUE)
-legend('topright', levels(wtr), pch = unique(out$class), 
+legend('topright', levels(wtr), pch = unique(out$class), col = as.numeric(unique(wtr)),
 text.col = as.numeric(unique(wtr)), bty = "n")
 
 ```
@@ -77,7 +77,13 @@ tumourType <-  microarray[, 2309]
 margRelv <- marginalRelevance(profiles, tumourType)
 
 # plot 30 gene profiles with highest marginal relevance score
-plot(margRelv, type = "parallelcoord", n.feat = 50, col = tumourType )
+bestVars <- match(1:ncol(profiles), rank(margRelv$score, ties.method = "random"))
+
+ 
+library(gclus)
+
+cparcoord(profiles[,bestVars[2308:2280]],  col = tumourType)
+
 ```
 
 
