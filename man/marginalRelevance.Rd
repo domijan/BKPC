@@ -21,9 +21,6 @@ marginalRelevance(x, y)
 An object of class \code{"marginalRelevance"} including:
   
   \item{score}{Marginal relevance score of each feature.}
-  \item{rank}{The ranking in order of highest marginal relevance for each feature.}
-  \item{orderedData}{Data matrix with columns reordered by the marginal relevance of the features.}
-  \item{bestVars}{Features ordered by the marginal relevance.}
 
 }
 \references{
