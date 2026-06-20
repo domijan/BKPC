@@ -18,10 +18,6 @@ The first 2308 variables are the gene expression values for 88 arrays. The first
   }
 
 
-\source{
-These data have been taken from the supplementary web site to the publication \url{http://research.nhgri.nih.gov/microarray/Supplement/}.}
-
-
 \references{
 Khan, J., Wei, J.S., Ringner, M., Saal, L.H., Ladanyi, M., Westermann, F., Berthold, F., Schwab, M., Antonescu, C.R., Peterson, C. et al.: Classification and diagnostic prediction of cancers using gene expression profiling and artificial neural networks. 2001. Nat. Med., 7, 673-679. 
 }
