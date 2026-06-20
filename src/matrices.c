@@ -12,8 +12,14 @@
 #include <R_ext/Lapack.h>
 #include <R_ext/Utils.h>
 
-#ifndef FCONE
-# define FCONE
+#ifdef USE_FC_LEN_T
+# ifndef FCONE
+#  define FCONE , 1
+# endif
+#else
+# ifndef FCONE
+#  define FCONE
+# endif
 #endif
 
 /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
