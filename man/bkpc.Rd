@@ -207,7 +207,7 @@ KPCtest <- predict(result$kPCA, Ktest)
 # new data is linearly separable in the new feature space where classification takes place
 library(rgl)
 plot3d(KPCtest[ , 1 :  3], col = as.numeric(wte))
-
+pairs(KPCtest[ , 1 :  3], col = as.numeric(wte))
 
 # another model:  do not project the data to the principal axes of the feature space. 
 # NOTE: Slow
@@ -264,12 +264,12 @@ KPCtest <- predict(result$kPCA, Ktest)
 
 pairs(KPCtest[ , 1 :  3], col = as.numeric(wte), 
 main =  paste("symbol = predicted class", "\n", "color = true class" ), 
-pch = out$class, upper.panel = NULL)
+pch = as.numeric(out$class), upper.panel = NULL)
 
 par(xpd=TRUE)
 
 legend('topright', levels(wte), pch = unique(out$class), 
-text.col = as.numeric(unique(wte)), bty = "n")
+col = as.numeric(unique(wte)), bty = "n")
 
 
 }
