@@ -143,7 +143,9 @@ void cholesky(double *V, double *L, int Nrow )
   lda = Nrow;
 
   memcpy (L,V,Nrow*Nrow*sizeof(double));
-  dpotrf_( &upper_triangle, &n, L, &lda, &info FCONE); //inverse of the inverse
+  
+  F77_CALL(dpotrf)(&upper_triangle, &n, L, &lda, &info FCONE);
+  // dpotrf_( &upper_triangle, &n, L, &lda, &info FCONE); //inverse of the inverse
   for(i = 0; i < Nrow; i++) {
     	for(j = i + 1; j < Nrow; j++) {
           L[i*Nrow + j] = 0;              
